@@ -3,8 +3,8 @@ import _ from 'lodash';
 import path from 'path';
 import { cwd } from 'node:process';
 
-const getDataParse = (pathFile) => {
-  const data = readFileSync(pathFile, 'utf-8');
+const getDataParse = (path) => {
+  const data = readFileSync(path, 'utf-8');
   return JSON.parse(data);
 };
 
