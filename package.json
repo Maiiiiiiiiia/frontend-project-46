@@ -12,7 +12,7 @@
     "url": "git+https://github.com/Maiiiiiiiiia/frontend-project-46.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx jest"
   },
   "author": "Kulieva Maia",
   "license": "ISC",

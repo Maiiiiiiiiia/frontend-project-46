@@ -5,12 +5,11 @@ extends: airbnb-base
 overrides: []
 parserOptions:
   ecmaVersion: latest
-rules: {
-  no-console: 0,
-  "import/extensions": [
-    "error",
-        {
-         "js": "ignorePackages"
-     }
-  ]
-}
+rules:
+  import/extensions: 
+    - error
+    - ignorePackages
+    - js: always
+  no-console: 0
+  no-underscore-dangle: [2, { "allow": ["__filename", "__dirname"] }]
+  no-shadow: off
