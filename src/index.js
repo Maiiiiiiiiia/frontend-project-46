@@ -1,7 +1,13 @@
 import { readFileSync } from 'fs';
 import _ from 'lodash';
 import path from 'path';
-import { cwd } from 'node:process';
+// import { cwd } from 'node:process';
+// import { resolve } from 'node:process'
+
+// const getPath = (way) => {
+//  const data = path.resolve(process.cwd(), way);
+//  return JSON.parse(data);
+// };
 
 const getDataParse = (way) => {
   const data = readFileSync(way, 'utf-8');
@@ -9,8 +15,9 @@ const getDataParse = (way) => {
 };
 
 const genDiff = (filepath1, filepath2) => {
-  const resolvedFilepath1 = path.resolve(cwd(), filepath1);
-  const resolvedFilepath2 = path.resolve(cwd(), filepath2);
+  const currDir = process.cwd();
+  const resolvedFilepath1 = path.resolve(currDir, filepath1);
+  const resolvedFilepath2 = path.resolve(currDir, filepath2);
 
   const data1 = getDataParse(resolvedFilepath1);
   const data2 = getDataParse(resolvedFilepath2);
