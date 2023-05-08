@@ -20,5 +20,5 @@ const secondJSON = getFixturePath('file2.json');
 const expectedStylish = readFile('rightValueJson.txt').trim();
 
 test('getDiff', () => {
-  expect(genDiff(firstJSON, secondJSON)).toBe(expectedStylish);
+  expect(genDiff(firstJSON, secondJSON)).toEqual(expectedStylish);
 });
