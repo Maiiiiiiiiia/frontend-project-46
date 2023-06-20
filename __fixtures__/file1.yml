@@ -1,26 +1,26 @@
-json:
-  - rigid
-  - better for data interchange
-yaml: 
-  - slim and flexible
-  - better for configuration
-object:
-	key: value
-  array:
-    - null_value:
-    - boolean: true
-    - integer: 1
-    - alias: &example aliases are like variables
-    - alias: *example
-paragraph: >
-   Blank lines denote
-
-   paragraph breaks
-content: |-
-   Or we
-   can auto
-   convert line breaks
-   to save space
-alias: &foo
-  bar: baz
-alias_reuse: *foo 
+{
+  "common": {
+    "setting1": "Value 1",
+    "setting2": 200,
+    "setting3": true,
+    "setting6": {
+      "key": "value",
+      "doge": {
+        "wow": ""
+      }
+    }
+  },
+  "group1": {
+    "baz": "bas",
+    "foo": "bar",
+    "nest": {
+      "key": "value"
+    }
+  },
+  "group2": {
+    "abc": 12345,
+    "deep": {
+      "id": 45
+    }
+  }
+}

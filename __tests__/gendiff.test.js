@@ -19,12 +19,13 @@ const secondJSON = getFixturePath('file2.json');
 const firstYML = getFixturePath('file1.yml');
 const secondYML = getFixturePath('file2.yml');
 
-const expectedStylish = readFile('rightValueJson.txt').trim();
+const expectedJSON = readFile('rightValueJson.txt').trim();
+const expectedYML = readFile('rightValueYml.txt').trim();
 
 test('getDiff JSON file', () => {
-  expect(genDiff(firstJSON, secondJSON)).toEqual(expectedStylish);
+  expect(genDiff(firstJSON, secondJSON)).toEqual(expectedJSON);
 });
 
 test('getDiff YML file', () => {
-  expect(genDiff(firstYML, secondYML)).toEqual(expectedStylish);
+  expect(genDiff(firstYML, secondYML)).toEqual(expectedYML);
 });
