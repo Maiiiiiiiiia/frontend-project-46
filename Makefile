@@ -12,3 +12,8 @@ test:
 
 gendiff:
 	node bin/gendiff.js
+
+publish:
+	npm publish
+
+.PHONY: test
