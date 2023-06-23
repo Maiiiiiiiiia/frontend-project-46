@@ -1,4 +1,3 @@
-// import { readFileSync } from 'fs';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'node:url';
 import fs from 'fs';
@@ -20,17 +19,45 @@ const firstYML = getFixturePath('file1.yml');
 const secondYML = getFixturePath('file2.yml');
 
 const expectedJSON = readFile('rightValueJson.txt').trim();
-const expectedYML = readFile('rightValueStylish.txt').trim();
+const expectedStylish = readFile('rightValueStylish.txt').trim();
 const expectedPlain = readFile('rightValuePlain.txt').trim();
 
-test('#1 getDiff JSON file', () => {
-  expect(genDiff(firstJSON, secondJSON)).toEqual(expectedJSON);
+test('#1 difference stylish format test between JSON files', () => {
+  expect(genDiff(firstJSON, secondJSON, 'stylish')).toEqual(expectedStylish);
 });
 
-test('#2 getDiff YML file', () => {
-  expect(genDiff(firstYML, secondYML)).toEqual(expectedYML);
+test('#2 difference stylish format test between YML files', () => {
+  expect(genDiff(firstYML, secondYML, 'stylish')).toEqual(expectedStylish);
 });
 
-test('#3 plain', () => {
-  expect(genDiff(firstYML, secondJSON)).toEqual(expectedPlain);
+test('#3 difference plain format test between JSON files', () => {
+  expect(genDiff(firstJSON, secondJSON, 'plain')).toEqual(expectedPlain);
+});
+
+test('#4 difference plain format test between YML files', () => {
+  expect(genDiff(firstYML, secondYML, 'plain')).toEqual(expectedPlain);
+});
+
+test('#5 difference json format test between JSON files', () => {
+  expect(genDiff(firstJSON, secondJSON, 'json')).toEqual(expectedJSON);
+});
+
+test('#6 difference json format test between YML files', () => {
+  expect(genDiff(firstYML, secondYML, 'json')).toEqual(expectedJSON);
+});
+
+test('#7 difference default format test between JSON files', () => {
+  expect(genDiff(firstJSON, secondJSON)).toEqual(expectedStylish);
+});
+
+test('#8 difference default format test between YML files', () => {
+  expect(genDiff(firstYML, secondYML)).toEqual(expectedStylish);
+});
+
+test('#9 difference default format test between JSON and YML files', () => {
+  expect(genDiff(firstJSON, secondYML)).toEqual(expectedStylish);
+});
+
+test('#10 difference plain format test between YML and JSON files', () => {
+  expect(genDiff(firstYML, secondJSON, 'plain')).toEqual(expectedPlain);
 });
