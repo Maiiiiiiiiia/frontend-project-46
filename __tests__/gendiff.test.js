@@ -20,12 +20,17 @@ const firstYML = getFixturePath('file1.yml');
 const secondYML = getFixturePath('file2.yml');
 
 const expectedJSON = readFile('rightValueJson.txt').trim();
-const expectedYML = readFile('rightValueYml.txt').trim();
+const expectedYML = readFile('rightValueStylish.txt').trim();
+const expectedPlain = readFile('rightValuePlain.txt').trim();
 
-test('getDiff JSON file', () => {
+test('#1 getDiff JSON file', () => {
   expect(genDiff(firstJSON, secondJSON)).toEqual(expectedJSON);
 });
 
-test('getDiff YML file', () => {
+test('#2 getDiff YML file', () => {
   expect(genDiff(firstYML, secondYML)).toEqual(expectedYML);
+});
+
+test('#3 plain', () => {
+  expect(genDiff(firstYML, secondJSON)).toEqual(expectedPlain);
 });
