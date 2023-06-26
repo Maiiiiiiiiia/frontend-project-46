@@ -9,4 +9,8 @@ Flat file comparison (JSON). Asciinema of gendiff.
 [![asciicast](https://asciinema.org/a/IKKzLopEzLmMRpLydOSXZ6RxL.svg)](https://asciinema.org/a/IKKzLopEzLmMRpLydOSXZ6RxL)
 
 Plain. Asciinema of gendiff.
+[![asciicast](https://asciinema.org/a/LytAnu4BWwK1ZGDkXgmDVlTEU.svg)](https://asciinema.org/a/LytAnu4BWwK1ZGDkXgmDVlTEU)
+
+
 [![asciicast](https://asciinema.org/a/MmQOFY3AUUGPwL6duq7sfk6yE.svg)](https://asciinema.org/a/MmQOFY3AUUGPwL6duq7sfk6yE)
+

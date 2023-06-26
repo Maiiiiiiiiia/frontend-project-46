@@ -1,4 +1,5 @@
 const getIndent = (depth, replacer = ' ', spacesCount = 4) => replacer.repeat(spacesCount * depth - 2);
+
 const makeString = (value, depth) => {
   if (!(typeof value === 'object' && value !== null && !Array.isArray(value))) {
     return value;
