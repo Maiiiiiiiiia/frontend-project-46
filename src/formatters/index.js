@@ -1,4 +1,4 @@
-import generateDiffTree from './generateDiffTree.js';
+import generateDiffTree from './stylish.js';
 import plain from './plain.js';
 
 const getFormat = (data, format = 'stylish') => {

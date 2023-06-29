@@ -16,12 +16,11 @@ const generateDiffTree = (array) => {
   const iter = (node, depth = 1) => {
     const result = node.map((element) => {
       const strChildren = makeString(element.children, depth);
-      const strChildren2 = makeString(element.children2, depth);
       const indent = getIndent(depth);
       if (element.type === 'parent') {
         return `${indent}  ${element.key}: {\n${iter(element.children, depth + 1)}\n${indent}  }`;
       }
-      if (element.type === 'stay same') {
+      if (element.type === 'staySame') {
         return `${indent}  ${element.key}: ${strChildren}`;
       }
       if (element.type === 'deleted') {
@@ -30,6 +29,7 @@ const generateDiffTree = (array) => {
       if (element.type === 'added') {
         return `${indent}+ ${element.key}: ${strChildren}`;
       }
+      const strChildren2 = makeString(element.children2, depth);
       return `${indent}- ${element.key}: ${strChildren}\n${indent}+ ${element.key}: ${strChildren2}`;
     });
 
