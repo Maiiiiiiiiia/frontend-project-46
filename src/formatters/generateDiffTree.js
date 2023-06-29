@@ -6,8 +6,8 @@ const makeString = (value, depth) => {
   }
   const keys = Object.keys(value);
   const result = keys.map((key) => {
-    const newKey = value[key];
-    return `${getIndent(depth + 1)}  ${key}: ${makeString(newKey, depth + 1)}`;
+    const newValue = value[key];
+    return `${getIndent(depth + 1)}  ${key}: ${makeString(newValue, depth + 1)}`;
   });
   return `{\n${result.join('\n')}\n  ${getIndent(depth)}}`;
 };
@@ -15,19 +15,22 @@ const makeString = (value, depth) => {
 const generateDiffTree = (array) => {
   const iter = (node, depth = 1) => {
     const result = node.map((element) => {
+      const strChildren = makeString(element.children, depth);
+      const strChildren2 = makeString(element.children2, depth);
+      const indent = getIndent(depth);
       if (element.type === 'parent') {
-        return `${getIndent(depth)}  ${element.key}: {\n${iter(element.children, depth + 1)}\n${getIndent(depth)}  }`;
+        return `${indent}  ${element.key}: {\n${iter(element.children, depth + 1)}\n${indent}  }`;
       }
       if (element.type === 'stay same') {
-        return `${getIndent(depth)}  ${element.key}: ${makeString(element.children, depth)}`;
+        return `${indent}  ${element.key}: ${strChildren}`;
       }
       if (element.type === 'deleted') {
-        return `${getIndent(depth)}- ${element.key}: ${makeString(element.children, depth)}`;
+        return `${indent}- ${element.key}: ${strChildren}`;
       }
       if (element.type === 'added') {
-        return `${getIndent(depth)}+ ${element.key}: ${makeString(element.children, depth)}`;
+        return `${indent}+ ${element.key}: ${strChildren}`;
       }
-      return `${getIndent(depth)}- ${element.key}: ${makeString(element.children, depth)}\n${getIndent(depth)}+ ${element.key}: ${makeString(element.children2, depth)}`;
+      return `${indent}- ${element.key}: ${strChildren}\n${indent}+ ${element.key}: ${strChildren2}`;
     });
 
     return result.join('\n');
