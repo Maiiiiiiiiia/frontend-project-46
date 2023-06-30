@@ -38,14 +38,12 @@ const compareData = (obj1, obj2) => {
         children: value2,
       };
     }
-    if (obj1HasKey && obj2HasKey) {
-      if (value1 === value2) {
-        return {
-          type: 'staySame',
-          key,
-          children: value1,
-        };
-      }
+    if (obj1HasKey && obj2HasKey && value1 === value2) {
+      return {
+        type: 'staySame',
+        key,
+        children: value1,
+      };
     }
     return {
       type: 'diffValue',
